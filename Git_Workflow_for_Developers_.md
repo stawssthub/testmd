@@ -170,7 +170,6 @@ Another safety  measure here    is  that    everything  happens in  our local co
     `git revert <commit_Id>`<br />
 
 <br />
-<br />
 *Flow Chart:*
 
 ```mermaid
@@ -190,10 +189,8 @@ flowchart TD;
     git_revert_commitid[git revert commit_Id]-->git_commit[git commit -m 'commit message'];
 ```
 <br />
-<br />
 
 ----
-<br />
 <br />
 
 *****
