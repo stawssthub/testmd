@@ -133,7 +133,7 @@ Another safety  measure here    is  that    everything  happens in  our local co
 
 1.  Clone repository  from    GitHub  to  local   computer(VDI).  from    repository  page    on  GitHub  click   the green   button  labeled clone   or  download    and "clone  with    HTTPS'  section and copy    the repository **url**.<br />
 
-2.  Open  up  a   git bash    terminal    locally(VDI)    navigate    to  the directory   where   we  want    to  clone   the repository  and run the git clone   command with the    address of  respository with  the following   command.<br />
+2.  Open  up  a   git bash    terminal  in  local   computer(VDI)   and navigate    to  the directory   where   we  want    to  clone   the repository  and run the git clone   command with the    address of  respository with  the following   command.<br />
 
     `git clone https://name-of-the-repository-link`<br />
 
@@ -141,7 +141,7 @@ Another safety  measure here    is  that    everything  happens in  our local co
 
     'cd <repo_name>'<br />
 
-4.  Next  Create  a   new branch    ('feature  branch': this    can be  created in  remote  repository  or  can be  created in  terminal    based on process)   and checkout    to  that    branch  where   we  need    to  write   the code.<br />
+4.  By  default we will be  on  'main/master'   so  we  need to create  a   new branch    ('feature  branch': this    colud be  created in  remote  repository  or  could be  created in  terminal    based on process)   and checkout    to  that    branch  where   we    want    to  write   the code    as  per the tasks.  we can  checkout    with    the following   commands.<br />
 
     `git checkout <branch_name>`<br />
      or<br />
@@ -153,26 +153,50 @@ Another safety  measure here    is  that    everything  happens in  our local co
     `git add . `   // To add the all changes.<br />
     `git commit -m "commit message”`<br />  //To commit all changes.<br />
 
-6.  So    far have    only    modified    our local   copy    of  the respository.    To  add the changes to  git repo    files   on  local   computer    to  the version of  remote  repository  on  GitHub  we  can push    chnages with  the following   command.<br />
+6.  So    far   we  have    only    modified    our local   copy    of  the respository.    To  add the changes to  git repo    files   on  local   computer    to  the version of  remote  repository  on  GitHub  we  can push    chnages with  the following   command.<br />
 
     `git push -u <remote_name> <branch_name>`<br />
 
-    **Note:**   we  need    to  provide username    and password    for GitHub,  if  prompted   any message.<br />
+    **Note:**   we  need    to  provide GitHub  username    and password,   if any message pop-up for  authorization.<br />
 
 7.  After we  have    pushed  commits,    visit   the remote  repository  on  GitHub  and notice  that    changes are reflected   there,  then    we  need    to  create  a   pull    request form    “feature branch to  “main/master branch”    by  adding required Reviewers .<br />
 
 8.  Reviewers will    review    PR's    and merge   the changes by  approving   the PR's.   If  reviewers   identified any code issue   or  conflicts,  that    PR  will    be  reject  and Developers  need to be  work    on  code    fix accordingly.<br />
 
-9.  Reverting commits: Sometimes  have    to  undo    commits based   on  modification    or  issues  in  code,   so  we must revert  the commits to  previous    version,    and to  revert,   we  need    to  run the git log –oneline in the git terminal    and find    the latest  commit, then run the git revert command with the    following   commands.   then    we  need to  push    the latest  commit  to  the remote  repository  by  creating PR.<br />
+9.  Reverting commits: Sometimes    we  have    to  undo    commits based   on  modification    or  issues  in  code,   so  we must revert  the commits to  previous    version,    and to  revert,   we  need    to  run the git log –oneline in the git terminal    and find    the latest  commit, then run the git revert command with the    following   commands.   then    we  need to  push    the latest  commit  to  the remote  repository  by  creating PR.<br />
 
-    `git log –online`<br />
+    `git log –oneline`<br />
 
-    `git revert <commit_id>`<br />
+    `git revert <commit_Id>`<br />
+
+<br />
+<br />
+*Flow Chart:*
+
+```mermaid
+flowchart TD;
+    remote_repository-->working_directory[git clone https://name-of-the-repository-link];
+    working_directory[git clone https://name-of-the-repository-link]-->Change_directory[cd repo_name ];
+    Change_directory[cd repo_name ]-->checkout_branch[git checkout branch_name  or  git checkout -b branch_name];
+    checkout_branch[git checkout branch_name  or  git checkout -b branch_name]-->git_status[git status];
+    git_status[git status]-->git_add[git add .  or  git add -A];
+    git_add[git add .  or  git add -A]-->git_commit[git commit -m 'commit message'];
+    git_commit[git commit -m 'commit message']-->git_push[git push -u remote_name branch_name];
+    git_push[git push -u remote_name branch_name]-->remote_repository;
+    checkout_branch[git checkout branch_name  or  git checkout -b branch_name]-->git_pull[git pull remote];
+    git_pull[git pull remote]-->git_status[git status];
+    checkout_branch[git checkout branch_name  or  git checkout -b branch_name]-->git_rever_log[git log –online];
+    git_revert_log[git log –oneline]-->git_revert_commitid[git revert commit_Id];
+    git_revert_commitid[git revert commit_Id]-->git_commit[git commit -m 'commit message'];
+```
+<br />
+<br />
 
 ----
+<br />
+<br />
 
-TL;DR: \pagebreak
-
+*****
 
 **Steps   to  Clone   the Project Code    and Push    to  Remote  Repository  in  GitHub   Using VS Code:**<br />
 
@@ -188,26 +212,13 @@ TL;DR: \pagebreak
 
 6.  Next  we  need to push    commited    changes to  remote  repository, for that    navigate    to  source  control and click   on  Push.<br />
 
-7.  Once the Changes are pushed to feature branch in remote repository, we need to create a pull request form “feature branch” to “main/master branch” by adding required approvalsAfter we  have    pushed  commits,    visit   the remote  repository  on  GitHub  and notice  that    changes are reflected   there,  then    we  need    to  create  a   pull    request form    “feature branch to  “main/master branch”    by  adding required Reviewers.<br />
-
-8.  
+7.  Once the changes are pushed to feature branch in remote repository, we need to create a pull request form “feature branch” to “main/master branch” by adding required approvalsAfter we  have    pushed  commits,    visit   the remote  repository  on  GitHub  and notice  that    changes are reflected   there,  then    we  need    to  create  a   pull    request form    “feature branch to  “main/master branch”    by  adding required Reviewers.<br />
 
 8.  Reviewers will    review    PR's    and merge   the changes by  approving   PR's.   If  reviewers   identified any code issue   or  conflicts,  that    PR  will    be  reject  and Developers  need to be  work    on  code    fix accordingly.<br />
 
 9.  Reverting Changes:    to  undo    commits,    navigate    to  source  control select  commit  and click   on  Undo    last    commit. then    we  need    to  push    the latest  commit  to  the remote  repository  by  creating PR.<br />
 
-#  Flow Chart
 
-<br>
 
-```mermaid
-flowchart TD;
-    remote_repository-->working_directory[git clone https://name-of-the-repository-link];
-    working_directory[git clone https://name-of-the-repository-link]-->Change_directory[cd repo_name ];
-    Change_directory[cd repo_name ]-->checkout_branch[git checkout branch_name  or  git checkout -b branch_name];
-    checkout_branch[git checkout branch_name  or  git checkout -b branch_name]-->git_status[git status];
-    git_status[git status]-->git_add[git add .  or  git add -A];
-    git_add[git add .  or  git add -A]-->git_commit[git commit -m 'commit message'];
-    git_commit[git commit -m 'commit message']-->git_push[git push -u remote_name branch_name];
-    git_push[git push -u remote_name branch_name]-->remote_repository;
-```
+
+
